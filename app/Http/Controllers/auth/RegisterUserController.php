@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Nette\Utils\Random;
 
 class RegisterUserController extends Controller
 {
@@ -23,10 +24,11 @@ class RegisterUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-               
+    
 
         $user = User::create([
             'name' => $request->name,
+            'client_code' => mt_rand(10000000, 9999999999),
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
