@@ -21,14 +21,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/register', [RegisterUserController::class, 'store'])
-    ->middleware('guest')
-    ->name('register');
+Route::post('/register', [RegisterUserController::class, 'store'])->middleware('guest');
+    
 
-Route::post('/login', [LoginController::class, "login"]) 
-    ->middleware('guest');
+Route::post('/login', [LoginController::class, "login"])->middleware('guest');
 
 Route::get("/user", [UserController::class, "user"]) -> middleware('auth:sanctum');
+
+Route::post("/update", [UserController::class, "update"]) -> middleware('auth:sanctum');
 
 Route::get("/logout", [LogOutController::class, 'logout']) -> middleware('auth:sanctum'); 
     
