@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd(env('FRONTEND_URL'));
     return view('welcome');
 });
 
