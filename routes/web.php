@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogOutController;
 use App\Http\Controllers\auth\RegisterUserController;
 use App\Http\Controllers\auth\UserController;
+use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/offers', [OfferController::class, 'index']);
 
 Route::post('/register', [RegisterUserController::class, 'store'])->middleware('guest');
     
-
 Route::post('/login', [LoginController::class, "login"])->middleware('guest');
 
 Route::get("/user", [UserController::class, "user"]) -> middleware('auth:sanctum');
