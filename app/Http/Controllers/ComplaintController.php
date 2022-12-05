@@ -15,6 +15,13 @@ class ComplaintController extends Controller
 
         $complaint = Complaint::where('user_id', $id) -> orderBy('created_at', 'desc') ->first();
 
+        if($complaint -> statut == 'archived') {
+            return response()->json([
+                'data' => null,
+                'status' => 'success'
+            ]);
+        }
+
         return response()->json([
             'data' => $complaint,
             'status' => 'success'
